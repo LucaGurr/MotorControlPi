@@ -34,34 +34,6 @@ The system consists of two main components:
   - Computer: `pyserial`
   - Raspberry Pi: `adafruit-circuitpython-motorkit`
 
-## File Transfer to Raspberry Pi
-
-### Method 1: USB File Transfer
-1. Connect the Raspberry Pi Zero to your computer via USB
-2. The Pi will appear as a USB gadget device
-3. Copy the file using your operating system's file manager or terminal:
-
-Windows (Command Prompt):
-```bash
-copy pi_code.py D:\   # Replace D: with your Pi's drive letter
-```
-
-Linux/macOS (Terminal):
-```bash
-cp pi_code.py /media/$USER/PI_ZERO/
-```
-
-### Method 2: SCP Transfer (If Pi has network access)
-```bash
-# For Windows, Linux, and macOS
-scp pi_code.py pi@raspberrypi.local:~/
-```
-
-If the hostname doesn't work, use the Pi's IP address:
-```bash
-scp pi_code.py pi@192.168.1.xxx:~/  # Replace with Pi's IP
-```
-
 ## Detailed Hardware Setup
 
 ### 1. I2C Configuration
