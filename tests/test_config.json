@@ -1,0 +1,12 @@
+{
+    "mock_delay": 0.01,
+    "com_port": "COM3",
+    "test_duration": 3600,
+    "log_level": "INFO",
+    "hat_addresses": [96, 97],
+    "motor_config": {
+        "steps_per_rev": 200,
+        "max_speed": 1000,
+        "acceleration": 500
+    }
+}

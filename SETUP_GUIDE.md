@@ -172,3 +172,20 @@
    - Check motor connections monthly
    - Verify HAT mounting screws are tight
    - Update software as needed
+
+## Testing Suite
+
+### Mock Hardware Testing
+1. Enable mock mode for development without physical hardware:
+   ```bash
+   python motor_control.py --mock
+   ```
+    interactive tests:
+        python tests/interactive_test.py --mock
+
+### basic functionality without mock hardware:
+    python tests/hardware_test.py --port COM3
+
+    python tests/calibrate.py --port COM3
+
+    python tests/stress_test.py --port COM3 --duration 3600
