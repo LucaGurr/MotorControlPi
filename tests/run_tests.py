@@ -1,11 +1,10 @@
 import unittest
 import sys
-import os
-import logging
 from pathlib import Path
+import logging
 
 sys.path.append(str(Path(__file__).parent.parent))
-from tests.test_motor_control import TestMotorControl
+from tests.test_motor_control import TestMotorControl, TestHardwareControl
 from tests.test_communication import TestCommunication
 
 def setup_logging():
@@ -16,11 +15,16 @@ def setup_logging():
     )
 
 if __name__ == '__main__':
+    import os
     os.makedirs('test_results', exist_ok=True)
     setup_logging()
-    
-    test_suite = unittest.TestLoader().loadTestsFromTestCase(TestMotorControl)
-    test_suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestCommunication))
-    
+
+    suite = unittest.TestSuite()
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestMotorControl))
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestHardwareControl))
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestCommunication))
+
     runner = unittest.TextTestRunner(verbosity=2)
-    runner.run(test_suite)
+    result = runner.run(suite)
+
+    sys.exit(not result.wasSuccessful())

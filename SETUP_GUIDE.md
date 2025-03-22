@@ -183,6 +183,9 @@
     interactive tests:
         python tests/interactive_test.py --mock
 
+    regular tests:
+        python tests/run_tests.py
+
 ### basic functionality without mock hardware:
     python tests/hardware_test.py --port COM3
 
